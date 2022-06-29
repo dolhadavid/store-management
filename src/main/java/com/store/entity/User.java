@@ -10,15 +10,13 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 @Entity
 @Builder
+@Data
 @NoArgsConstructor
-@Getter
-@Setter
 @AllArgsConstructor
 @Table(name = "users")
 public class User implements Serializable {

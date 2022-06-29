@@ -1,5 +1,6 @@
 package com.store.dto;
 
+import java.io.Serial;
 import java.io.Serializable;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -15,6 +16,8 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 public class ProductDto implements Serializable {
 
+  @Serial
+  private static final long serialVersionUID = -2793387071879961220L;
   @NotNull(message = "Price mandatory")
   private Double price;
 
