@@ -1,0 +1,41 @@
+logging:
+  level:
+    ROOT: WARN
+    com.store: DEBUG
+
+spring:
+  application:
+    name: Store Management
+  datasource:
+    url: jdbc:postgresql://localhost:5432/store_management
+    username: postgres
+    password: postgres
+    auto-commit: true
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQL9Dialect
+    database: POSTGRESQL
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate:
+        dialect: com.store.entity.CustomPostgreSQLDialect
+        format_sql: true
+        flush_before_completion: true
+        globally_quoted_identifiers: true
+    hibernate:
+      ddl-auto: update
+  liquibase:
+    contexts: dev
+    drop-first: false
+    enabled: true
+    change-log: classpath:/db.changelog.xml
+  main:
+    allow-bean-definition-overriding: true
+    ## MULTIPART (MultipartProperties)
+  # Enable multipart uploads
+
+format.date.iso: "yyyy-MM-dd'T'HH:mm:ss.SSSXXX"
+
+jasypt:
+  encryptor:
+    bean: customEncryptorBean
