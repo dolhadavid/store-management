@@ -6,7 +6,7 @@ import com.store.dto.ProductDto;
 import com.store.entity.Product;
 import com.store.entity.User;
 import com.store.exception.ProductNotFoundException;
-import com.store.exception.UserNotAuthorizedException;
+import com.store.exception.UserNotAllowedException;
 import com.store.mapper.ProductMapper;
 import com.store.service.ProductService;
 import java.util.List;
@@ -56,8 +56,7 @@ public class ProductServiceImpl implements ProductService {
       productRepository.save(product);
       log.info("New product is saved: " + product);
     } else {
-      throw new UserNotAuthorizedException(
-          "User <" + username + "> is not authorized for the operation");
+      throw new UserNotAllowedException("User <" + username + "> is not allowed for the operation");
     }
   }
 
@@ -69,8 +68,8 @@ public class ProductServiceImpl implements ProductService {
       Product product = optionalProduct.get();
 
       if (!username.equals(product.getUser().getUsername())) {
-        throw new UserNotAuthorizedException(
-            "User <" + username + "> is not authorized for the operation");
+        throw new UserNotAllowedException(
+            "User <" + username + "> is not allowed for the operation");
       }
 
       product.setPrice(price);
