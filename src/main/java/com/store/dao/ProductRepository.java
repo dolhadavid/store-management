@@ -3,7 +3,6 @@ package com.store.dao;
 import com.store.dto.ProductDto;
 import com.store.entity.Product;
 import java.util.List;
-import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
